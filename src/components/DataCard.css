@@ -1,0 +1,75 @@
+.data-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease;
+  border-top: 4px solid var(--primary-color);
+}
+
+.data-card:hover {
+  transform: translateY(-5px);
+}
+
+.data-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.data-card-icon {
+  font-size: 1.8rem;
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+.data-card-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+.data-card-value-container {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.data-card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.data-card-unit {
+  font-size: 1rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+  margin-left: 5px;
+}
+
+.data-card-trend {
+  margin-left: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.trend-up {
+  color: var(--danger-color);
+}
+
+.trend-down {
+  color: var(--success-color);
+}
+
+.trend-stable {
+  color: var(--warning-color);
+}
+
+.data-card-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  opacity: 0.8;
+  line-height: 1.4;
+}

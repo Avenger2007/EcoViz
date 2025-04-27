@@ -1,0 +1,60 @@
+{
+  "name": "climate-dashboard",
+  "version": "1.0.0",
+  "description": "Interactive Global Climate Change Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "nodemon server/index.js",
+    "dev": "concurrently \"npm run server\" \"npm run start\"",
+    "seed": "node server/scripts/seedData.js"
+  },
+  "keywords": [
+    "climate",
+    "dashboard",
+    "data",
+    "visualization",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "react-router-dom": "^6.14.0",
+    "d3": "^7.8.5",
+    "leaflet": "^1.9.4",
+    "chart.js": "^4.3.0",
+    "react-chartjs-2": "^5.2.0",
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "mongoose": "^7.3.1",
+    "multer": "^1.4.5-lts.1",
+    "csv-parser": "^3.0.0",
+    "node-fetch": "^2.6.9",
+    "cheerio": "^1.0.0-rc.12",
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^2.0.22"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

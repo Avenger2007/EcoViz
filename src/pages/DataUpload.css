@@ -1,0 +1,253 @@
+.data-upload-page {
+  padding-bottom: 40px;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--text-dark);
+}
+
+.upload-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.upload-info {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.upload-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.upload-info h3 {
+  font-size: 1.2rem;
+  margin: 20px 0 10px;
+  color: var(--text-dark);
+}
+
+.upload-info p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.upload-info ul {
+  margin-bottom: 15px;
+  padding-left: 20px;
+}
+
+.upload-info li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.code-example {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+}
+
+.code-example pre {
+  margin: 0;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Recent Uploads Section */
+.recent-uploads {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.recent-upload-item {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 3px solid var(--primary-color);
+  transition: transform 0.2s ease;
+}
+
+.recent-upload-item:hover {
+  transform: translateX(5px);
+}
+
+.upload-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.upload-item-name {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+.upload-item-status {
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.status-pending {
+  background-color: #ffeaa7;
+  color: #d35400;
+}
+
+.status-approved {
+  background-color: #d5f5e3;
+  color: #27ae60;
+}
+
+.status-rejected {
+  background-color: #fadbd8;
+  color: #c0392b;
+}
+
+.upload-item-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  opacity: 0.8;
+}
+
+.upload-form-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.upload-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(44, 140, 153, 0.2);
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.form-group input[type="file"] {
+  padding: 10px 0;
+}
+
+.file-info {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.file-info p {
+  margin: 5px 0;
+}
+
+.error-message {
+  color: var(--danger-color);
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 4px;
+}
+
+.success-message {
+  color: var(--success-color);
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(46, 204, 113, 0.1);
+  border-radius: 4px;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .upload-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .upload-info {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .upload-info h2,
+  .upload-form h2 {
+    font-size: 1.3rem;
+  }
+  
+  .upload-item-details {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
