@@ -92,14 +92,11 @@ if (process.env.NODE_ENV === 'production') {
 const initializeData = async () => {
   try {
     // Import data services
-    const nasaService = require('./services/nasaService');
-    const noaaService = require('./services/noaaService');
-    const worldBankService = require('./services/worldBankService');
-    const geoDataService = require('./services/geoDataService');
-    
-    // Import database utilities
-    const { isUsingInMemory, getInMemoryStore } = require('./config/db');
-    
+    const nasaService = await import('./services/nasaService.js');
+    const noaaService = await import('./services/noaaService.js');
+    const worldBankService = await import('./services/worldBankService.js');
+    const geoDataService = await import('./services/geoDataService.js');
+
     if (isUsingInMemory()) {
       // Using in-memory store
       console.log('Initializing in-memory data store...');
