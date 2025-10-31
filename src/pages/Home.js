@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 // Import sample data for the hero section
-import { globalTemperatureData } from '../utils/sampleData';
-import ClimateChart from '../components/ClimateChart';
+import { globalTemperatureData } from '../utils/sampleData.js';
+import ClimateChart from '../components/ClimateChart.jsx';
 
 const Home = () => {
   return (

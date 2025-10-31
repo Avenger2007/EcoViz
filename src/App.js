@@ -3,14 +3,14 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 // Components
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/Navbar.js';
+import Footer from './components/Footer.js';
 
 // Pages
-import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
-import DataUpload from './pages/DataUpload';
-import About from './pages/About';
+import Home from './pages/Home.js';
+import Dashboard from './pages/Dashboard.js';
+import DataUpload from './pages/DataUpload.js';
+import About from './pages/About.js';
 
 function App() {
   return (

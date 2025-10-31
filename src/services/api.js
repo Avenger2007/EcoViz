@@ -1,99 +1,100 @@
 import axios from 'axios';
 
-// Create an axios instance with the base URL from environment variables
-const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5001/api'
-});
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
 
-// Climate data API calls
-export const fetchTemperatureData = async (region = 'global', timeRange = null) => {
+/**
+ * Fetches climate data based on provided filters
+ * @param {Object} filters - Filters for the climate data (e.g., region, timeframe, variables)
+ * @returns {Promise<Object>} - Climate data response
+ */
+export const fetchClimateData = async (filters) => {
   try {
-    const params = { region };
-    if (timeRange) {
-      params.timeRange = timeRange;
-    }
-    
-    const response = await api.get('/climate/temperature', { params });
+    const response = await axios.get(`${API_BASE_URL}/climate-data`, {
+      params: filters
+    });
     return response.data;
   } catch (error) {
-    console.error('Error fetching temperature data:', error);
+    console.error('Error fetching climate data:', error);
     throw error;
   }
 };
 
-export const fetchCO2Data = async (timeRange = null) => {
+/**
+ * Uploads a dataset to the server
+ * @param {File} file - The file to upload
+ * @returns {Promise<Object>} - Upload response
+ */
+export const uploadDataset = async (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+
   try {
-    const params = {};
-    if (timeRange) {
-      params.timeRange = timeRange;
-    }
-    
-    const response = await api.get('/climate/co2', { params });
+    const response = await axios.post(`${API_BASE_URL}/upload`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
     return response.data;
   } catch (error) {
-    console.error('Error fetching CO2 data:', error);
+    console.error('Error uploading dataset:', error);
     throw error;
   }
 };
 
-export const fetchSeaLevelData = async (timeRange = null) => {
+/**
+ * Fetches available regions for climate data
+ * @returns {Promise<Array>} - List of available regions
+ */
+export const fetchRegions = async () => {
   try {
-    const params = {};
-    if (timeRange) {
-      params.timeRange = timeRange;
-    }
-    
-    const response = await api.get('/climate/sea-level', { params });
+    const response = await axios.get(`${API_BASE_URL}/regions`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching sea level data:', error);
+    console.error('Error fetching regions:', error);
     throw error;
   }
 };
 
-export const fetchArcticIceData = async (timeRange = null) => {
+/**
+ * Fetches available climate variables
+ * @returns {Promise<Array>} - List of available climate variables
+ */
+export const fetchClimateVariables = async () => {
   try {
-    const params = {};
-    if (timeRange) {
-      params.timeRange = timeRange;
-    }
-    
-    const response = await api.get('/climate/arctic-ice', { params });
+    const response = await axios.get(`${API_BASE_URL}/variables`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching Arctic ice data:', error);
+    console.error('Error fetching climate variables:', error);
     throw error;
   }
 };
 
-export const fetchPrecipitationData = async (region = 'global', timeRange = null) => {
+/**
+ * Fetches time series data for a specific region and variable
+ * @param {string} region - The region identifier
+ * @param {string} variable - The climate variable identifier
+ * @param {Object} timeRange - The time range for the data
+ * @returns {Promise<Object>} - Time series data
+ */
+export const fetchTimeSeriesData = async (region, variable, timeRange) => {
   try {
-    const params = { region };
-    if (timeRange) {
-      params.timeRange = timeRange;
-    }
-    
-    const response = await api.get('/climate/precipitation', { params });
+    const response = await axios.get(`${API_BASE_URL}/time-series`, {
+      params: { region, variable, ...timeRange }
+    });
     return response.data;
   } catch (error) {
-    console.error('Error fetching precipitation data:', error);
+    console.error('Error fetching time series data:', error);
     throw error;
   }
 };
 
-export const fetchRegionalClimateData = async (region = 'global') => {
-  try {
-    const response = await api.get(`/climate/region/${region}`);
-    return response.data;
-  } catch (error) {
-    console.error(`Error fetching climate data for ${region}:`, error);
-    throw error;
-  }
-};
-
+/**
+ * Fetches global statistics for climate indicators
+ * @returns {Promise<Object>} - Global statistics data
+ */
 export const fetchGlobalStats = async () => {
   try {
-    const response = await api.get('/climate/stats');
+    const response = await axios.get(`${API_BASE_URL}/global-stats`);
     return response.data;
   } catch (error) {
     console.error('Error fetching global stats:', error);
@@ -101,10 +102,16 @@ export const fetchGlobalStats = async () => {
   }
 };
 
-// GeoJSON data API calls
-export const fetchWorldGeoData = async (dataType = 'temperature') => {
+/**
+ * Fetches world geographical data with climate indicators
+ * @param {string} dataType - Type of climate data to overlay on the map
+ * @returns {Promise<Object>} - World geographical data with climate indicators
+ */
+export const fetchWorldGeoData = async (dataType) => {
   try {
-    const response = await api.get('/climate/geo/world', { params: { dataType } });
+    const response = await axios.get(`${API_BASE_URL}/world-geo-data`, {
+      params: { dataType }
+    });
     return response.data;
   } catch (error) {
     console.error('Error fetching world geo data:', error);
@@ -112,49 +119,89 @@ export const fetchWorldGeoData = async (dataType = 'temperature') => {
   }
 };
 
-export const fetchRegionGeoData = async (region, dataType = 'temperature') => {
+/**
+ * Fetches temperature data for a specific region and time range
+ * @param {string} region - The region identifier
+ * @param {Object} timeRange - The time range for the data
+ * @returns {Promise<Object>} - Temperature data
+ */
+export const fetchTemperatureData = async (region, timeRange) => {
   try {
-    const response = await api.get(`/climate/geo/region/${region}`, { params: { dataType } });
-    return response.data;
-  } catch (error) {
-    console.error(`Error fetching geo data for ${region}:`, error);
-    throw error;
-  }
-};
-
-// Data upload API calls
-export const uploadClimateData = async (formData) => {
-  try {
-    const response = await api.post('/uploads/file', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+    const response = await axios.get(`${API_BASE_URL}/temperature`, {
+      params: { region, ...timeRange }
     });
     return response.data;
   } catch (error) {
-    console.error('Error uploading climate data:', error);
+    console.error('Error fetching temperature data:', error);
     throw error;
   }
 };
 
-export const fetchUserUploads = async () => {
+/**
+ * Fetches CO2 concentration data for a specific time range
+ * @param {Object} timeRange - The time range for the data
+ * @returns {Promise<Object>} - CO2 data
+ */
+export const fetchCO2Data = async (timeRange) => {
   try {
-    const response = await api.get('/uploads');
+    const response = await axios.get(`${API_BASE_URL}/co2`, {
+      params: timeRange
+    });
     return response.data;
   } catch (error) {
-    console.error('Error fetching user uploads:', error);
+    console.error('Error fetching CO2 data:', error);
     throw error;
   }
 };
 
-export const fetchUserUploadById = async (id) => {
+/**
+ * Fetches sea level data for a specific time range
+ * @param {Object} timeRange - The time range for the data
+ * @returns {Promise<Object>} - Sea level data
+ */
+export const fetchSeaLevelData = async (timeRange) => {
   try {
-    const response = await api.get(`/uploads/${id}`);
+    const response = await axios.get(`${API_BASE_URL}/sea-level`, {
+      params: timeRange
+    });
     return response.data;
   } catch (error) {
-    console.error(`Error fetching upload ${id}:`, error);
+    console.error('Error fetching sea level data:', error);
     throw error;
   }
 };
 
-export default api;
+/**
+ * Fetches Arctic ice data for a specific time range
+ * @param {Object} timeRange - The time range for the data
+ * @returns {Promise<Object>} - Arctic ice data
+ */
+export const fetchArcticIceData = async (timeRange) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/arctic-ice`, {
+      params: timeRange
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching Arctic ice data:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetches precipitation data for a specific region and time range
+ * @param {string} region - The region identifier
+ * @param {Object} timeRange - The time range for the data
+ * @returns {Promise<Object>} - Precipitation data
+ */
+export const fetchPrecipitationData = async (region, timeRange) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/precipitation`, {
+      params: { region, ...timeRange }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching precipitation data:', error);
+    throw error;
+  }
+};

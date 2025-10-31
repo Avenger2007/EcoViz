@@ -1,0 +1,121 @@
+.map-visualization {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #e0f2f1;
+  color: #00796b;
+  position: relative;
+}
+
+.map-note {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #757575;
+  font-style: italic;
+}
+
+.map-sample-image {
+  width: 80%;
+  height: 60%;
+  margin: 15px 0;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.map-control-btn {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.map-control-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.map-control-btn.reset {
+  font-size: 14px;
+}
+
+/* Choropleth Map Specific Styles */
+.choropleth-map .map-container path {
+  stroke: #fff;
+  stroke-width: 0.5px;
+}
+
+.choropleth-map .map-container path:hover {
+  stroke: #000;
+  stroke-width: 1px;
+  cursor: pointer;
+}
+
+/* Heat Map Specific Styles */
+.heat-map .heatmap-cell:hover {
+  stroke: #000;
+  stroke-width: 1px;
+  cursor: pointer;
+}
+
+/* Interactive Map Specific Styles */
+.interactive-map .leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.interactive-map .mapboxgl-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Loading message */
+.loading-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  color: #333;
+  z-index: 10;
+}

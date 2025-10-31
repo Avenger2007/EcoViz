@@ -1,0 +1,118 @@
+.filter-panel {
+  padding: 15px;
+}
+
+.filter-panel h2 {
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  font-size: 20px;
+}
+
+.filter-group {
+  margin-bottom: 15px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.filter-group select,
+.filter-group input[type="number"],
+.filter-group input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Year range styles */
+.filter-group.year-range .year-inputs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.filter-group.year-range .year-input {
+  flex: 1;
+}
+
+.filter-group.year-range .year-input label {
+  font-size: 12px;
+  color: var(--light-text-color);
+}
+
+/* Checkbox styles */
+.filter-group.checkbox {
+  margin-bottom: 10px;
+}
+
+.filter-group.checkbox label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filter-group.checkbox input[type="checkbox"] {
+  margin-right: 8px;
+  width: auto;
+}
+
+/* Advanced filters styles */
+.advanced-filters {
+  margin: 20px 0;
+}
+
+.advanced-toggle {
+  width: 100%;
+  padding: 8px;
+  background-color: #f5f5f5;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  color: var(--light-text-color);
+  transition: background-color 0.3s;
+}
+
+.advanced-toggle:hover {
+  background-color: #e0e0e0;
+}
+
+.advanced-filters-content {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+/* Filter actions */
+.filter-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.apply-filters,
+.reset-filters {
+  width: 100%;
+}
+
+.reset-filters {
+  background-color: #9e9e9e;
+}
+
+.reset-filters:hover {
+  background-color: #757575;
+}

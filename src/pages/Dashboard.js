@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 
 // Components
-import WorldMap from '../components/WorldMap';
-import ClimateChart from '../components/ClimateChart';
-import DataCard from '../components/DataCard';
-import FilterBar from '../components/FilterBar';
+import WorldMap from '../components/WorldMap.js';
+import ClimateChart from '../components/ClimateChart.jsx';
+import DataCard from '../components/DataCard.js';
+import FilterBar from '../components/FilterBar.js';
 
 // API Services
 import { 
@@ -16,7 +16,7 @@ import {
   fetchPrecipitationData,
   fetchWorldGeoData,
   fetchGlobalStats
-} from '../services/api';
+} from '../services/api.js';
 
 // Fallback to sample data if API fails
 import { 
@@ -26,7 +26,7 @@ import {
   arcticIceData,
   worldGeoData,
   globalStats as sampleGlobalStats
-} from '../utils/sampleData';
+} from '../utils/sampleData.js';
 
 const Dashboard = () => {
   // State for filters

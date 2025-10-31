@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoViz - Climate Change Dashboard Features</title>
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #26a69a;
+            --background-color: #f5f5f5;
+            --text-color: #333;
+            --light-text-color: #666;
+            --border-color: #ddd;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            color: var(--primary-color);
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .logo span {
+            font-size: 14px;
+            color: var(--light-text-color);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .feature-section h2 {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            margin-bottom: 15px;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            background-color: #e0f2f1;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #1565c0;
+        }
+
+        footer {
+            background-color: #263238;
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .footer-container p {
+            margin: 0;
+            color: #b0bec5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>EcoViz</h1>
+                <span>Climate Change Dashboard</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Interactive Global Climate Change Dashboard Features</h1>
+        
+        <section class="feature-section">
+            <h2>Data Visualization Types</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-image">Choropleth Map</div>
+                    <h3>Choropleth Maps</h3>
+                    <p>Color-coded maps showing climate data variations across different regions, making it easy to identify geographic patterns and hotspots.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Heat Map</div>
+                    <h3>Heat Maps</h3>
+                    <p>Visualize temperature and other climate variables with color intensity representing data values, perfect for identifying extreme values and patterns.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Interactive Map</div>
+                    <h3>Interactive Maps</h3>
+                    <p>Explore climate data geographically with zoom, pan, and click interactions to dive deeper into specific regions and data points.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Line Chart</div>
+                    <h3>Line Charts</h3>
+                    <p>Track climate trends over time with smooth line charts that clearly show increases, decreases, and rate of change in climate variables.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Bar Chart</div>
+                    <h3>Bar Charts</h3>
+                    <p>Compare climate data across different categories, regions, or time periods with easy-to-read bar charts that highlight differences.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Scatter Plot</div>
+                    <h3>Scatter Plots</h3>
+                    <p>Analyze relationships between different climate variables to identify correlations and patterns that might not be visible in other chart types.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Pie Chart</div>
+                    <h3>Pie Charts</h3>
+                    <p>Visualize proportional data such as emissions by sector or energy sources with intuitive pie charts that show relative contributions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Time Series</div>
+                    <h3>Time Series</h3>
+                    <p>Watch climate change unfold with animated time series visualizations that show how variables change over decades with play/pause controls.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="feature-section">
+            <h2>User Interaction Tools</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-image">Advanced Filters</div>
+                    <h3>Advanced Filtering</h3>
+                    <p>Filter climate data by region, time period, climate variable, and more with an intuitive interface that updates visualizations in real-time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Side-by-Side Comparison</div>
+                    <h3>Side-by-Side Comparisons</h3>
+                    <p>Compare different datasets, regions, or time periods with a powerful comparison tool that highlights differences and similarities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Annotations</div>
+                    <h3>Annotations</h3>
+                    <p>Add notes and highlights to specific data points or trends to mark important events, anomalies, or insights for sharing with others.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="feature-section">
+            <h2>Data Input and Customization</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-image">Data Upload</div>
+                    <h3>Custom Data Upload</h3>
+                    <p>Upload your own climate datasets in CSV, JSON, or Excel formats with an intuitive interface that includes file preview and field mapping.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">Visualization Settings</div>
+                    <h3>Visualization Customization</h3>
+                    <p>Personalize your visualizations with options for chart type, color scheme, size, animations, and more to create the perfect view of your data.</p>
+                </div>
+            </div>
+        </section>
+        
+        <a href="preview.html" class="btn">View Dashboard Demo</a>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 EcoViz. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
