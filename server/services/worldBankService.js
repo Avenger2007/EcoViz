@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 // World Bank Climate Data API
 const WORLD_BANK_API_BASE = 'https://climatedata.worldbank.org/api/v1';
@@ -9,7 +9,7 @@ const WORLD_BANK_API_BASE = 'https://climatedata.worldbank.org/api/v1';
  * @param {number} startYear - Start year for data
  * @param {number} endYear - End year for data
  */
-const fetchPrecipitationData = async (region = 'global', startYear = 1980, endYear = 2020) => {
+export const fetchPrecipitationData = async (region = 'global', startYear = 1980, endYear = 2020) => {
   try {
     console.log(`Fetching precipitation data for ${region}...`);
     
@@ -90,7 +90,7 @@ const fetchPrecipitationData = async (region = 'global', startYear = 1980, endYe
  * @param {number} startYear - Start year for data
  * @param {number} endYear - End year for data
  */
-const fetchRegionalTemperatureData = async (region, startYear = 1980, endYear = 2020) => {
+export const fetchRegionalTemperatureData = async (region, startYear = 1980, endYear = 2020) => {
   try {
     console.log(`Fetching temperature data for ${region}...`);
     
@@ -140,7 +140,7 @@ const fetchRegionalTemperatureData = async (region, startYear = 1980, endYear = 
 /**
  * Fallback function to use sample precipitation data when API is unavailable
  */
-const getSamplePrecipitationData = (region = 'global') => {
+export const getSamplePrecipitationData = (region = 'global') => {
   return {
     dataType: 'precipitation',
     source: 'World Bank Climate Data (Sample)',
@@ -169,7 +169,7 @@ const getSamplePrecipitationData = (region = 'global') => {
 /**
  * Fallback function to use sample regional temperature data when API is unavailable
  */
-const getSampleRegionalTemperatureData = (region) => {
+export const getSampleRegionalTemperatureData = (region) => {
   // Different sample data based on region
   let values;
   
@@ -220,11 +220,4 @@ const getSampleRegionalTemperatureData = (region) => {
       lastUpdated: new Date()
     }
   };
-};
-
-module.exports = {
-  fetchPrecipitationData,
-  fetchRegionalTemperatureData,
-  getSamplePrecipitationData,
-  getSampleRegionalTemperatureData
 };

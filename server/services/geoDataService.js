@@ -1,6 +1,4 @@
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
+import axios from 'axios';
 
 // Natural Earth GeoJSON data for world countries
 const NATURAL_EARTH_URL = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson';
@@ -11,7 +9,7 @@ const NASA_COUNTRY_TEMP_URL = 'https://data.giss.nasa.gov/gistemp/tabledata_v4/'
 /**
  * Fetch and process world GeoJSON data with climate indicators
  */
-const fetchWorldGeoData = async () => {
+export const fetchWorldGeoData = async () => {
   try {
     console.log('Fetching world GeoJSON data...');
     
@@ -88,7 +86,7 @@ const fetchWorldGeoData = async () => {
 /**
  * Fallback function to use sample world GeoJSON data when API is unavailable
  */
-const getSampleWorldGeoData = () => {
+export const getSampleWorldGeoData = () => {
   return {
     type: "FeatureCollection",
     features: [
@@ -204,9 +202,4 @@ const getSampleWorldGeoData = () => {
       lastUpdated: new Date()
     }
   };
-};
-
-module.exports = {
-  fetchWorldGeoData,
-  getSampleWorldGeoData
 };
