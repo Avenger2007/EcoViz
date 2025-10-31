@@ -1,9 +1,13 @@
-const express = require('express');
+import express from 'express';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import uploadController from '../controllers/uploadController.js';
+
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
-const uploadController = require('../controllers/uploadController');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Set up multer for file uploads
 const storage = multer.diskStorage({
@@ -59,4 +63,4 @@ router.get('/:id', uploadController.getUserUploadById);
 router.put('/:id/approve', uploadController.approveUserUpload);
 router.put('/:id/reject', uploadController.rejectUserUpload);
 
-module.exports = router;
+export default router;

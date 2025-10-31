@@ -1,9 +1,13 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const dotenv = require('dotenv');
-const { connectDB, isUsingInMemory } = require('./config/db');
-const fs = require('fs');
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import dotenv from 'dotenv';
+import { connectDB, isUsingInMemory, getInMemoryStore } from './config/db.js';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config();
@@ -38,8 +42,8 @@ if (process.env.MONGO_URI) {
 }
 
 // Import routes
-const climateRoutes = require('./routes/climateRoutes');
-const uploadRoutes = require('./routes/uploadRoutes');
+import climateRoutes from './routes/climateRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -88,14 +92,11 @@ if (process.env.NODE_ENV === 'production') {
 const initializeData = async () => {
   try {
     // Import data services
-    const nasaService = require('./services/nasaService');
-    const noaaService = require('./services/noaaService');
-    const worldBankService = require('./services/worldBankService');
-    const geoDataService = require('./services/geoDataService');
-    
-    // Import database utilities
-    const { isUsingInMemory, getInMemoryStore } = require('./config/db');
-    
+    const nasaService = await import('./services/nasaService.js');
+    const noaaService = await import('./services/noaaService.js');
+    const worldBankService = await import('./services/worldBankService.js');
+    const geoDataService = await import('./services/geoDataService.js');
+
     if (isUsingInMemory()) {
       // Using in-memory store
       console.log('Initializing in-memory data store...');

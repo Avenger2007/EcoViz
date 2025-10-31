@@ -1,5 +1,5 @@
-const GeoData = require('../models/GeoData');
-const geoDataService = require('../services/geoDataService');
+import GeoData from '../models/GeoData.js';
+import * as geoDataService from '../services/geoDataService.js';
 
 /**
  * Get world GeoJSON data with climate indicators
@@ -165,7 +165,7 @@ const getRegionGeoData = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   getWorldGeoData,
   getRegionGeoData
 };

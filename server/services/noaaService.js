@@ -1,7 +1,11 @@
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
-const csv = require('csv-parser');
+import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import csv from 'csv-parser';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // NOAA Sea Level Data
 const NOAA_SEA_LEVEL_URL = 'https://climate.nasa.gov/system/internal_resources/details/original/121_Global_Sea_Level_Data_File.txt';
@@ -12,7 +16,7 @@ const NOAA_ARCTIC_ICE_URL = 'https://climate.nasa.gov/system/internal_resources/
 /**
  * Fetch and process sea level data from NOAA
  */
-const fetchSeaLevelData = async () => {
+export const fetchSeaLevelData = async () => {
   try {
     console.log('Fetching sea level data...');
     const response = await axios.get(NOAA_SEA_LEVEL_URL);
@@ -91,7 +95,7 @@ const fetchSeaLevelData = async () => {
 /**
  * Fetch and process Arctic sea ice data from NOAA
  */
-const fetchArcticIceData = async () => {
+export const fetchArcticIceData = async () => {
   try {
     console.log('Fetching Arctic sea ice data...');
     const response = await axios.get(NOAA_ARCTIC_ICE_URL);
@@ -167,7 +171,7 @@ const fetchArcticIceData = async () => {
 /**
  * Fallback function to use sample sea level data when API is unavailable
  */
-const getSampleSeaLevelData = () => {
+export const getSampleSeaLevelData = () => {
   return {
     dataType: 'seaLevel',
     source: 'NOAA/NASA (Sample)',
@@ -198,7 +202,7 @@ const getSampleSeaLevelData = () => {
 /**
  * Fallback function to use sample Arctic sea ice data when API is unavailable
  */
-const getSampleArcticIceData = () => {
+export const getSampleArcticIceData = () => {
   return {
     dataType: 'arcticIce',
     source: 'NOAA/NASA (Sample)',
@@ -222,11 +226,4 @@ const getSampleArcticIceData = () => {
       lastUpdated: new Date()
     }
   };
-};
-
-module.exports = {
-  fetchSeaLevelData,
-  fetchArcticIceData,
-  getSampleSeaLevelData,
-  getSampleArcticIceData
 };

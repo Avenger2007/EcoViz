@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const { isUsingInMemory } = require('../config/db');
-const { GeoData: InMemoryGeoData } = require('./inMemoryModels');
+import mongoose from 'mongoose';
+import { isUsingInMemory } from '../config/db.js';
+import { GeoData as InMemoryGeoData } from './inMemoryModels.js';
 
 // Define the schema only if we're using MongoDB
 let GeoData;
@@ -66,4 +66,4 @@ if (!isUsingInMemory()) {
   GeoData = InMemoryGeoData;
 }
 
-module.exports = GeoData;
+export default GeoData;

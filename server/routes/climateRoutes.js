@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import climateDataController from '../controllers/climateDataController.js';
+import geoDataController from '../controllers/geoDataController.js';
+
 const router = express.Router();
-const climateDataController = require('../controllers/climateDataController');
-const geoDataController = require('../controllers/geoDataController');
 
 // Climate data routes
 router.get('/temperature', climateDataController.getTemperatureData);
@@ -16,4 +17,4 @@ router.get('/stats', climateDataController.getGlobalStats);
 router.get('/geo/world', geoDataController.getWorldGeoData);
 router.get('/geo/region/:region', geoDataController.getRegionGeoData);
 
-module.exports = router;
+export default router;

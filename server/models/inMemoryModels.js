@@ -3,7 +3,7 @@
  * This provides a simple API compatible with Mongoose models
  */
 
-const { getInMemoryStore } = require('../config/db');
+import { getInMemoryStore } from '../config/db.js';
 
 // Helper to generate a random ID
 const generateId = () => {
@@ -149,7 +149,7 @@ const UserUpload = {
   }
 };
 
-module.exports = {
+export {
   ClimateData,
   GeoData,
   UserUpload

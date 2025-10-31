@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const { isUsingInMemory } = require('../config/db');
-const { UserUpload: InMemoryUserUpload } = require('./inMemoryModels');
+import mongoose from 'mongoose';
+import { isUsingInMemory } from '../config/db.js';
+import { UserUpload as InMemoryUserUpload } from './inMemoryModels.js';
 
 // Define the schema only if we're using MongoDB
 let UserUpload;
@@ -61,4 +61,4 @@ if (!isUsingInMemory()) {
   UserUpload = InMemoryUserUpload;
 }
 
-module.exports = UserUpload;
+export default UserUpload;

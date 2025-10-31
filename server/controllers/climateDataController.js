@@ -1,7 +1,7 @@
-const ClimateData = require('../models/ClimateData');
-const nasaService = require('../services/nasaService');
-const noaaService = require('../services/noaaService');
-const worldBankService = require('../services/worldBankService');
+import ClimateData from '../models/ClimateData.js';
+import * as nasaService from '../services/nasaService.js';
+import * as noaaService from '../services/noaaService.js';
+import * as worldBankService from '../services/worldBankService.js';
 
 /**
  * Get temperature data
@@ -401,7 +401,7 @@ const getGlobalStats = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   getTemperatureData,
   getCO2Data,
   getSeaLevelData,
