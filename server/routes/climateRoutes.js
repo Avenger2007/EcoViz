@@ -17,4 +17,4 @@ router.get('/stats', climateDataController.getGlobalStats);
 router.get('/geo/world', geoDataController.getWorldGeoData);
 router.get('/geo/region/:region', geoDataController.getRegionGeoData);
 
-module.exports = router;
+export default router;
