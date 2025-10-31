@@ -1,6 +1,46 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+// Create axios instance with timeout and retry configuration
+const axiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 10000, // 10 seconds timeout
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Add response interceptor for retry logic
+axiosInstance.interceptors.response.use(
+  response => response,
+  async error => {
+    const config = error.config;
+
+    if (!config) {
+      return Promise.reject(error);
+    }
+
+    config.__retryCount = config.__retryCount || 0;
+
+    // Retry on network errors or 5xx server errors (max 3 attempts)
+    if (
+      (error.response?.status >= 500 || !error.response) &&
+      config.__retryCount < 3
+    ) {
+      config.__retryCount += 1;
+
+      // Exponential backoff: 1s, 2s, 4s
+      const delay = Math.pow(2, config.__retryCount - 1) * 1000;
+      await new Promise(resolve => setTimeout(resolve, delay));
+
+      console.log(`Retrying request (attempt ${config.__retryCount})...`);
+      return axiosInstance(config);
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 /**
  * Fetches climate data based on provided filters
