@@ -1,7 +1,11 @@
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
-const csv = require('csv-parser');
+import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import csv from 'csv-parser';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // NASA GISS Surface Temperature Analysis (GISTEMP) API
 const NASA_GISTEMP_URL = 'https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv';
@@ -12,7 +16,7 @@ const NASA_CO2_URL = 'https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_annmean_m
 /**
  * Fetch and process global temperature data from NASA GISTEMP
  */
-const fetchTemperatureData = async () => {
+export const fetchTemperatureData = async () => {
   try {
     console.log('Fetching NASA temperature data...');
     // Add timeout to prevent long-hanging requests
@@ -103,7 +107,7 @@ const fetchTemperatureData = async () => {
 /**
  * Fetch and process CO2 concentration data from NASA/NOAA
  */
-const fetchCO2Data = async () => {
+export const fetchCO2Data = async () => {
   try {
     console.log('Fetching CO2 data...');
     const response = await axios.get(NASA_CO2_URL, { timeout: 10000 });
@@ -193,7 +197,7 @@ const fetchCO2Data = async () => {
 /**
  * Fallback function to use sample data when API is unavailable
  */
-const getSampleTemperatureData = () => {
+export const getSampleTemperatureData = () => {
   return {
     dataType: 'temperature',
     source: 'NASA GISTEMP (Sample)',
@@ -224,7 +228,7 @@ const getSampleTemperatureData = () => {
 /**
  * Fallback function to use sample CO2 data when API is unavailable
  */
-const getSampleCO2Data = () => {
+export const getSampleCO2Data = () => {
   return {
     dataType: 'co2',
     source: 'NOAA Global Monitoring Laboratory (Sample)',
@@ -250,11 +254,4 @@ const getSampleCO2Data = () => {
       lastUpdated: new Date()
     }
   };
-};
-
-module.exports = {
-  fetchTemperatureData,
-  fetchCO2Data,
-  getSampleTemperatureData,
-  getSampleCO2Data
 };
