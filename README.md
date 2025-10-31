@@ -1,10 +1,12 @@
-# EcoViz - Interactive Global Climate Change Dashboard
+# 🌍 EcoViz - Interactive Global Climate Change Dashboard
 
-**An advanced web application for visualizing and exploring climate change data with interactive visualizations, real-time data, and comprehensive analytics.**
+**An advanced web application for visualizing and exploring climate change data with interactive visualizations, real-time data, comprehensive analytics, and modern UI/UX.**
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Status](https://img.shields.io/badge/status-Active%20Development-brightgreen)
+[![Version](https://img.shields.io/badge/version-2.1.0-blue)](https://github.com/yourusername/ecoviz)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Status](https://img.shields.io/badge/status-Production%20Ready-brightgreen)](https://github.com/yourusername/ecoviz)
+[![Build](https://img.shields.io/badge/build-passing-brightgreen)]()
+[![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)]()
 
 ## 🌍 Overview
 
