@@ -49,13 +49,13 @@ axiosInstance.interceptors.response.use(
  */
 export const fetchClimateData = async (filters) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/climate-data`, {
+    const response = await axiosInstance.get('/climate-data', {
       params: filters
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching climate data:', error);
-    throw error;
+    console.error('Error fetching climate data:', error.message);
+    throw new Error(`Failed to fetch climate data: ${error.message}`);
   }
 };
 
