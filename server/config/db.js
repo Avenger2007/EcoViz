@@ -42,8 +42,4 @@ const getInMemoryStore = () => {
   return inMemoryStore;
 };
 
-module.exports = {
-  connectDB,
-  isUsingInMemory,
-  getInMemoryStore
-};
+export { connectDB, isUsingInMemory, getInMemoryStore };
