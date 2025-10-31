@@ -42,8 +42,8 @@ if (process.env.MONGO_URI) {
 }
 
 // Import routes
-const climateRoutes = require('./routes/climateRoutes');
-const uploadRoutes = require('./routes/uploadRoutes');
+import climateRoutes from './routes/climateRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
