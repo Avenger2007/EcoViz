@@ -15,6 +15,19 @@ import LoadingScreen from './components/LoadingScreen.jsx';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'en');
+
+  // Initialize theme and language
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem('language', language);
+    document.documentElement.setAttribute('lang', language);
+  }, [language]);
 
   // Simulate loading of application resources
   useEffect(() => {
@@ -29,20 +42,33 @@ function App() {
     return <LoadingScreen />;
   }
 
+  const handleThemeToggle = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+  };
+
   return (
     <Router>
-      <div className="app">
-        <Header />
+      <div className="app" data-theme={theme}>
+        <Header
+          theme={theme}
+          onThemeToggle={handleThemeToggle}
+          language={language}
+          onLanguageChange={handleLanguageChange}
+        />
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
-            <Route path="/dashboard" element={<EnhancedDashboard />} />
-            <Route path="/classic" element={<Dashboard />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/upload" element={<DataUpload />} />
+            <Route path="/dashboard" element={<EnhancedDashboard language={language} />} />
+            <Route path="/classic" element={<Dashboard language={language} />} />
+            <Route path="/about" element={<About language={language} />} />
+            <Route path="/upload" element={<DataUpload language={language} />} />
           </Routes>
         </main>
-        <Footer />
+        <Footer language={language} />
       </div>
     </Router>
   );
