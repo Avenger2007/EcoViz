@@ -86,6 +86,36 @@ EcoViz is a modern, fully-featured climate change dashboard that allows users to
   - File size limits (10MB)
   - Approved/rejected workflow for uploads
 
+## 🆕 What's New in v2.1
+
+### 🎨 UI/UX Enhancements
+- ✨ **Dark Mode Support** - Seamless dark theme with system preference detection
+- 🌐 **Multi-Language** - Full i18n support for 5 languages with localStorage persistence
+- 📱 **Mobile First** - Completely responsive with optimized mobile experience
+- 🎭 **Modern Design System** - Beautiful gradients, shadows, and color palette
+- ⚡ **Smooth Animations** - CSS transitions and micro-interactions throughout
+
+### 🔧 Technical Improvements
+- 🛡️ **Enhanced API Error Handling** - Retry logic with exponential backoff
+- ⏱️ **Request Timeout Protection** - 10-second timeout on all API calls
+- 🔄 **Automatic Retries** - Up to 3 attempts for failed requests
+- 📊 **Better Error Messages** - User-friendly notifications
+- 🎯 **Code Quality** - JSDoc comments and improved structure
+
+### 📚 Documentation
+- 📖 **Comprehensive README** - Complete setup and deployment guide
+- 🚀 **Quick Start Guide** - Get running in 2 minutes
+- 📋 **API Documentation** - All endpoints documented
+- 🏗️ **Architecture Guide** - System design explanation
+- 🐛 **Troubleshooting** - Common issues and solutions
+
+### ✅ Production Ready
+- ✔️ **Vercel Deployment** - Pre-configured for easy deployment
+- ✔️ **Environment Setup** - Clear configuration guide
+- ✔️ **Testing** - Complete test checklist
+- ✔️ **Performance** - Optimized bundle size and load times
+- ✔️ **Accessibility** - WCAG compliant components
+
 ## 🛠️ Tech Stack
 
 ### Frontend
