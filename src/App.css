@@ -69,31 +69,37 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background-color var(--transition-medium), color var(--transition-medium);
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--background-color);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #bdbdbd;
-  border-radius: 4px;
+  background: var(--border-color);
+  border-radius: 5px;
+  border: 2px solid var(--background-color);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9e9e9e;
+  background: var(--text-tertiary);
 }
 
 .app {
