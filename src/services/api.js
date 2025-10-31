@@ -69,15 +69,15 @@ export const uploadDataset = async (file) => {
   formData.append('file', file);
 
   try {
-    const response = await axios.post(`${API_BASE_URL}/upload`, formData, {
+    const response = await axiosInstance.post('/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     });
     return response.data;
   } catch (error) {
-    console.error('Error uploading dataset:', error);
-    throw error;
+    console.error('Error uploading dataset:', error.message);
+    throw new Error(`Failed to upload dataset: ${error.message}`);
   }
 };
 
