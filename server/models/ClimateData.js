@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const { isUsingInMemory } = require('../config/db');
-const { ClimateData: InMemoryClimateData } = require('./inMemoryModels');
+import mongoose from 'mongoose';
+import { isUsingInMemory } from '../config/db.js';
+import { ClimateData as InMemoryClimateData } from './inMemoryModels.js';
 
 // Define the schema only if we're using MongoDB
 let ClimateData;
@@ -59,4 +59,4 @@ if (!isUsingInMemory()) {
   ClimateData = InMemoryClimateData;
 }
 
-module.exports = ClimateData;
+export default ClimateData;
