@@ -87,11 +87,11 @@ export const uploadDataset = async (file) => {
  */
 export const fetchRegions = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/regions`);
+    const response = await axiosInstance.get('/regions');
     return response.data;
   } catch (error) {
-    console.error('Error fetching regions:', error);
-    throw error;
+    console.error('Error fetching regions:', error.message);
+    throw new Error(`Failed to fetch regions: ${error.message}`);
   }
 };
 
@@ -101,11 +101,11 @@ export const fetchRegions = async () => {
  */
 export const fetchClimateVariables = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/variables`);
+    const response = await axiosInstance.get('/variables');
     return response.data;
   } catch (error) {
-    console.error('Error fetching climate variables:', error);
-    throw error;
+    console.error('Error fetching climate variables:', error.message);
+    throw new Error(`Failed to fetch climate variables: ${error.message}`);
   }
 };
 
@@ -118,13 +118,13 @@ export const fetchClimateVariables = async () => {
  */
 export const fetchTimeSeriesData = async (region, variable, timeRange) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/time-series`, {
+    const response = await axiosInstance.get('/time-series', {
       params: { region, variable, ...timeRange }
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching time series data:', error);
-    throw error;
+    console.error('Error fetching time series data:', error.message);
+    throw new Error(`Failed to fetch time series data: ${error.message}`);
   }
 };
 
@@ -134,11 +134,11 @@ export const fetchTimeSeriesData = async (region, variable, timeRange) => {
  */
 export const fetchGlobalStats = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/global-stats`);
+    const response = await axiosInstance.get('/global-stats');
     return response.data;
   } catch (error) {
-    console.error('Error fetching global stats:', error);
-    throw error;
+    console.error('Error fetching global stats:', error.message);
+    throw new Error(`Failed to fetch global stats: ${error.message}`);
   }
 };
 
@@ -149,13 +149,13 @@ export const fetchGlobalStats = async () => {
  */
 export const fetchWorldGeoData = async (dataType) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/world-geo-data`, {
+    const response = await axiosInstance.get('/world-geo-data', {
       params: { dataType }
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching world geo data:', error);
-    throw error;
+    console.error('Error fetching world geo data:', error.message);
+    throw new Error(`Failed to fetch world geo data: ${error.message}`);
   }
 };
 
@@ -167,13 +167,13 @@ export const fetchWorldGeoData = async (dataType) => {
  */
 export const fetchTemperatureData = async (region, timeRange) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/temperature`, {
+    const response = await axiosInstance.get('/temperature', {
       params: { region, ...timeRange }
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching temperature data:', error);
-    throw error;
+    console.error('Error fetching temperature data:', error.message);
+    throw new Error(`Failed to fetch temperature data: ${error.message}`);
   }
 };
 
@@ -184,13 +184,13 @@ export const fetchTemperatureData = async (region, timeRange) => {
  */
 export const fetchCO2Data = async (timeRange) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/co2`, {
+    const response = await axiosInstance.get('/co2', {
       params: timeRange
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching CO2 data:', error);
-    throw error;
+    console.error('Error fetching CO2 data:', error.message);
+    throw new Error(`Failed to fetch CO2 data: ${error.message}`);
   }
 };
 
@@ -201,13 +201,13 @@ export const fetchCO2Data = async (timeRange) => {
  */
 export const fetchSeaLevelData = async (timeRange) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/sea-level`, {
+    const response = await axiosInstance.get('/sea-level', {
       params: timeRange
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching sea level data:', error);
-    throw error;
+    console.error('Error fetching sea level data:', error.message);
+    throw new Error(`Failed to fetch sea level data: ${error.message}`);
   }
 };
 
@@ -218,13 +218,13 @@ export const fetchSeaLevelData = async (timeRange) => {
  */
 export const fetchArcticIceData = async (timeRange) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/arctic-ice`, {
+    const response = await axiosInstance.get('/arctic-ice', {
       params: timeRange
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching Arctic ice data:', error);
-    throw error;
+    console.error('Error fetching Arctic ice data:', error.message);
+    throw new Error(`Failed to fetch Arctic ice data: ${error.message}`);
   }
 };
 
@@ -236,12 +236,12 @@ export const fetchArcticIceData = async (timeRange) => {
  */
 export const fetchPrecipitationData = async (region, timeRange) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/precipitation`, {
+    const response = await axiosInstance.get('/precipitation', {
       params: { region, ...timeRange }
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching precipitation data:', error);
-    throw error;
+    console.error('Error fetching precipitation data:', error.message);
+    throw new Error(`Failed to fetch precipitation data: ${error.message}`);
   }
 };
