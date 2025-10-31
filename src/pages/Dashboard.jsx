@@ -23,9 +23,19 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        
-        // For demonstration purposes, we'll use mock data
-        // In a real application, you would fetch data from the API
+
+        // Try to fetch from API, fallback to mock data if unavailable
+        try {
+          const [regionsRes, variablesRes] = await Promise.all([
+            fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/climate/region/global`),
+            fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/health`)
+          ]);
+
+          if (!regionsRes.ok) throw new Error('API unavailable');
+        } catch (apiError) {
+          console.log('API unavailable, using mock data:', apiError.message);
+        }
+
         const mockRegions = [
           { id: 'global', name: 'Global' },
           { id: 'north-america', name: 'North America' },
