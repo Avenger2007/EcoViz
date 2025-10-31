@@ -3,23 +3,27 @@
  * This script populates the database with initial climate data
  */
 
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const path = require('path');
-const fs = require('fs');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 // Import models
-const ClimateData = require('../models/ClimateData');
-const GeoData = require('../models/GeoData');
+import ClimateData from '../models/ClimateData.js';
+import GeoData from '../models/GeoData.js';
 
 // Import services
-const nasaService = require('../services/nasaService');
-const noaaService = require('../services/noaaService');
-const worldBankService = require('../services/worldBankService');
-const geoDataService = require('../services/geoDataService');
+import * as nasaService from '../services/nasaService.js';
+import * as noaaService from '../services/noaaService.js';
+import * as worldBankService from '../services/worldBankService.js';
+import * as geoDataService from '../services/geoDataService.js';
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/climate-dashboard', {
