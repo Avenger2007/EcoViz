@@ -141,12 +141,31 @@ EcoViz is a modern, fully-featured climate change dashboard that allows users to
 - **Rollup** - Alternative bundler
 - **Concurrently** - Multi-process runner
 
+## 🚀 Quick Start (2 Minutes)
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/ecoviz.git
+cd ecoviz
+
+# Install dependencies
+npm install --legacy-peer-deps
+
+# Create .env file
+cp .env.example .env
+
+# Start the app (runs both frontend and backend)
+npm start
+```
+
+Then open **http://localhost:3001** in your browser! 🎉
+
 ## 📦 Installation
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- npm (v6 or higher)
-- MongoDB (optional - will use in-memory store if not provided)
+- **Node.js** v14 or higher ([Download](https://nodejs.org/))
+- **npm** v6 or higher (comes with Node.js)
+- **MongoDB** (optional - app works with in-memory store)
 
 ### Step 1: Clone Repository
 ```bash
