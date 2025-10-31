@@ -1,8 +1,8 @@
-const UserUpload = require('../models/UserUpload');
-const ClimateData = require('../models/ClimateData');
-const fs = require('fs');
-const path = require('path');
-const csv = require('csv-parser');
+import UserUpload from '../models/UserUpload.js';
+import ClimateData from '../models/ClimateData.js';
+import fs from 'fs';
+import path from 'path';
+import csv from 'csv-parser';
 
 /**
  * Upload a climate data file
@@ -373,7 +373,7 @@ const determineUnit = (dataType) => {
   }
 };
 
-module.exports = {
+export {
   uploadFile,
   getUserUploads,
   getUserUploadById,
