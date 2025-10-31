@@ -296,33 +296,61 @@ GET /api/health
 
 ## 🚀 Deployment
 
-### Deploy to Vercel (Recommended)
+### Deploy to Vercel (Recommended) ⭐
 
-1. **Prerequisites**:
-   - Vercel account (free)
-   - GitHub account with repository
+Vercel is the best platform for deploying EcoViz - it's optimized for Next.js/React apps and offers amazing DX.
 
-2. **Steps**:
-   ```bash
-   # Install Vercel CLI
-   npm i -g vercel
-   
-   # Deploy
-   vercel
-   ```
+#### Prerequisites
+- [Vercel account](https://vercel.com) (free tier available)
+- GitHub account with repository pushed
+- Node.js installed locally
 
-3. **Environment Variables on Vercel**:
-   - Go to Vercel Dashboard
-   - Project Settings → Environment Variables
-   - Add:
-     - `NODE_ENV=production`
-     - `PORT=5000`
-     - `REACT_APP_API_URL=https://your-project.vercel.app/api`
-     - Optional: `MONGO_URI=your-mongodb-connection-string`
+#### Step 1: Prepare Your Repository
+```bash
+# Make sure all changes are committed
+git add .
+git commit -m "Prepare for Vercel deployment"
+git push origin main
+```
 
-4. **Custom Domain**:
-   - Domain Settings → Add Custom Domain
-   - Update DNS records as needed
+#### Step 2: Deploy to Vercel
+```bash
+# Option A: Via Vercel CLI
+npm i -g vercel  # Install Vercel CLI
+vercel           # Deploy (follow prompts)
+
+# Option B: Via GitHub (Recommended)
+# 1. Go to https://vercel.com
+# 2. Click "New Project"
+# 3. Import your GitHub repository
+# 4. Select root directory: ./ (default)
+# 5. Click Deploy
+```
+
+#### Step 3: Configure Environment Variables
+In Vercel Dashboard:
+1. Go to **Project Settings** → **Environment Variables**
+2. Add the following variables:
+
+| Variable | Value | Notes |
+|----------|-------|-------|
+| `NODE_ENV` | `production` | Required |
+| `PORT` | `5000` | Required |
+| `REACT_APP_API_URL` | `https://<your-project>.vercel.app/api` | Auto-filled after first deploy |
+| `MONGO_URI` | Your MongoDB Atlas URI | Optional - uses in-memory if not set |
+| `NASA_API_KEY` | Your NASA API key | Optional - uses DEMO_KEY if not set |
+
+#### Step 4: Verify Deployment
+- Your app will be available at `https://<your-project>.vercel.app`
+- All API calls will route through the serverless functions
+- Environment variables will be injected automatically
+
+#### Step 5: Set Custom Domain (Optional)
+1. Go to **Domains** in Vercel Dashboard
+2. Click **Add Domain**
+3. Enter your custom domain
+4. Follow DNS configuration instructions
+5. Wait for DNS propagation (usually 5-30 minutes)
 
 ### Deploy to Other Platforms
 
