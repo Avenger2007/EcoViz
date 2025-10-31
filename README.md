@@ -22,44 +22,69 @@ EcoViz is a modern, fully-featured climate change dashboard that allows users to
 
 ## ✨ Key Features
 
-### Frontend Features
+### 🎨 Modern UI/UX (v2.1)
+- **Beautiful Dark & Light Themes** - Toggle between elegant light and dark modes
+- **Multi-Language Support** - English, Spanish, French, German, Chinese
+- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- **Smooth Animations** - Modern transitions and micro-interactions
+- **Intuitive Navigation** - Easy-to-use interface with emoji icons
+- **Modern Color Palette** - Beautiful gradients and color schemes
+- **Accessible Components** - WCAG compliant UI elements
+
+### 📊 Frontend Features
 - **Multi-Tab Dashboard**: Overview, Maps, Charts, Time Series, and Upload sections
 - **Advanced Visualizations**:
   - Interactive 3D Globe (Three.js)
   - Choropleth Maps (Leaflet)
   - Line, Bar, and Scatter Charts (Chart.js)
   - Heat Maps and Time Series Animations
-  
+  - Customizable chart settings
+
 - **Interactive Tools**:
-  - Multi-region comparison
-  - Advanced data filtering
-  - Chart customization settings
-  - Data annotation tool
-  - Collapsible sidebar for better UX
+  - Multi-region comparison with trend analysis
+  - Advanced data filtering by region, timeframe, and variables
+  - Chart customization and export settings
+  - Data annotation tool for adding insights
+  - Real-time data refresh with configurable intervals
+
+- **Smart Alerts System** ⚠️
+  - Anomaly detection for climate changes
+  - Temperature spike alerts (>0.5°C)
+  - CO2 rise notifications (>2 ppm)
+  - Sea level change warnings (>5mm)
+  - Alert history and preferences
 
 - **Data Management**:
-  - Export as CSV/JSON
-  - Generate summary reports
+  - Export as CSV, JSON, or PDF
+  - Generate comprehensive summary reports
   - File upload (CSV, JSON, Excel)
-  - Data validation and processing
+  - Data validation and preprocessing
+  - Custom region drawing tool
 
-### Backend Features
-- **RESTful API** with comprehensive endpoints
+### 🔄 Backend Features (Enhanced)
+- **RESTful API** with comprehensive endpoints and error handling
+- **Advanced Error Handling**:
+  - Automatic retry logic with exponential backoff
+  - 10-second timeout protection
+  - User-friendly error messages
+  - Proper HTTP status codes
+
 - **Data Source Integration**:
   - NASA GISTEMP (Global Temperature)
   - NOAA (Sea Level, Arctic Ice)
   - World Bank (Regional Climate Data)
-  
+  - Graceful fallback to mock data
+
 - **Flexible Storage**:
   - MongoDB support for production
   - In-memory store for development
   - Automatic fallback mechanisms
 
-- **File Upload & Processing**:
-  - Multer for secure file handling
-  - CSV parsing and validation
+- **Security Features**:
+  - CORS enabled
+  - Input validation
   - File size limits (10MB)
-  - Approved/rejected workflow
+  - Approved/rejected workflow for uploads
 
 ## 🛠️ Tech Stack
 
