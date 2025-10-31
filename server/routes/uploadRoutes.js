@@ -63,4 +63,4 @@ router.get('/:id', uploadController.getUserUploadById);
 router.put('/:id/approve', uploadController.approveUserUpload);
 router.put('/:id/reject', uploadController.rejectUserUpload);
 
-module.exports = router;
+export default router;
