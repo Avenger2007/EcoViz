@@ -352,6 +352,38 @@ In Vercel Dashboard:
 4. Follow DNS configuration instructions
 5. Wait for DNS propagation (usually 5-30 minutes)
 
+#### Vercel Deployment Troubleshooting ✅
+
+**Problem: `npm install` fails with peer dependency conflict**
+```
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+```
+
+**Solution:** ✅ **ALREADY FIXED!**
+- `vercel.json` is configured with `npm install --legacy-peer-deps`
+- This resolves peer dependency conflicts automatically
+- No action needed - your build should succeed now!
+
+**If you still see this error:**
+1. Make sure you're using the latest `vercel.json`
+2. Redeploy after updating the file:
+   ```bash
+   git add vercel.json
+   git commit -m "Fix: Use --legacy-peer-deps in Vercel build"
+   git push
+   ```
+
+**Problem: API calls return 404**
+- Ensure `REACT_APP_API_URL` is set in Vercel environment variables
+- Format: `https://<your-project>.vercel.app/api`
+- Redeploy after setting environment variables
+
+**Problem: "502 Bad Gateway" or function errors**
+- Check Vercel deployment logs for detailed error messages
+- Ensure `server/index.js` exists in root directory
+- Verify `vercel.json` configuration is correct
+
 ### Deploy to Other Platforms
 
 #### Heroku
